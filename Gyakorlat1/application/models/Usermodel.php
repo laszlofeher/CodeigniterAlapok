@@ -29,7 +29,7 @@ class Usermodel extends CI_Model {
     
     public function getUserByEmailaddress($emailaddress = ''){
         if(strlen($emailaddress) > 0 ){
-            $this->db->select('id, emailaddress, password, salt, templogin, temppassword, tempsalt');
+            $this->db->select('id, lastname, firstname, emailaddress, password, salt, templogin, temppassword, tempsalt');
             $this->db->from('systemuser');
             $this->db->where('emailaddress', $emailaddress);
             $query = $this->db->get();
@@ -37,6 +37,8 @@ class Usermodel extends CI_Model {
                 foreach ($query->result() as $row) {}
                 $data = array(
                     'id'            => $row->id,
+                    'lastname'      => $row->lastname,
+                    'firstname'     => $row->firstname,
                     'emailaddress'  => $row->emailaddress,
                     'password'      => $row->password,
                     'salt'          => $row->salt,

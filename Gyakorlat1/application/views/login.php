@@ -37,7 +37,7 @@
     <?php echo validation_errors(); ?>
     <?php print(form_open("home/login")); ?>
       <div class="form-group has-feedback">
-        <input type="email" name="emailaddress" class="form-control" placeholder="Email">
+          <input type="email" name="emailaddress" value="<?php print(set_value('emailaddress', '', true)); ?>" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -58,7 +58,7 @@
         </div>
         <!-- /.col -->
       </div>
-      <?php form_close(); ?>
+      <?php print(form_close()); ?>
 
     <div class="social-auth-links text-center">
       <p>- OR -</p>

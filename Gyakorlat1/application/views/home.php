@@ -47,7 +47,6 @@
     <?php
         $this->load->view('menu');
     ?>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -560,10 +559,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <?php
-    $this->load->view('footer');
-  ?>
-
+    <?php
+      $this->load->view('footer');
+    ?>
   <!-- Control Sidebar -->
     <?php
         $this->load->view('controlsidebar');
@@ -584,7 +582,7 @@
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="assets/plugins/morris/morris.min.js"></script>
