@@ -25,7 +25,7 @@ class Home extends CI_Controller {
         
         public function login(){
             //1.par <input name="username"
-            $this->form_validation->set_rules('username','Felhasználó név','trim|required');
+            $this->form_validation->set_rules('emailaddress','Felhasználó név','trim|required|valid_email');
             $this->form_validation->set_rules('password','Jelszó','trim|required');
             //nem sikerült, validáció sikertelen
             if ($this->form_validation->run() == FALSE){
@@ -36,17 +36,17 @@ class Home extends CI_Controller {
                 
                 
             }
-            
-
-
             //$this->passgen();
-            
-            
         }
         
         private function passgen(){
             
         }
         
-        
+        private function usercheck($emailaddress, $password, $salt){
+            
+            
+            
+            
+        }
 }
