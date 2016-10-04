@@ -27,26 +27,26 @@ class Usermodel extends CI_Model {
         
     }
     
-    public function getUserByUsername($emailaddress = ''){
+    public function getUserByEmailaddress($emailaddress = ''){
         if(strlen($emailaddress) > 0 ){
             $this->db->select('id, emailaddress, password, salt, templogin, temppassword, tempsalt');
-            $this->db->from('user');
-            $this->db->where('username', $emailaddress);
+            $this->db->from('systemuser');
+            $this->db->where('emailaddress', $emailaddress);
             $query = $this->db->get();
             if ($query->num_rows() == 1) {
                 foreach ($query->result() as $row) {}
                 $data = array(
                     'id'            => $row->id,
-                    'emailaddress'  => $row->username,
+                    'emailaddress'  => $row->emailaddress,
                     'password'      => $row->password,
                     'salt'          => $row->salt,
                     'templogin'     => $row->templogin,
                     'temppassword'  => $row->temppassword,
                     'tempsalt'      => $row->tempsalt
                 );
-                
+                return $data;
             }
-            return true;
+            return false;
         }
         return false;
     }

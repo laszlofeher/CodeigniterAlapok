@@ -1,13 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Home extends CI_Controller {
-	
         function __construct() {
-        parent::__construct();
+            parent::__construct();
             $this->load->helper(array('url', 'form'));
             $this->load->library(array('form_validation','session'));
-            //$this->load->model(array('usermodel'));
+            $this->load->model(array('usermodel'));
         }
     
         public function index(){
@@ -32,7 +30,16 @@ class Home extends CI_Controller {
                 $this->load->view('login');
             }else{
                 //itt username, password ellenőrzés szükséges
-                
+                $emailaddress = $this->input->post('emailaddress');
+                $password = $this->input->post('password');
+                $id = $this->usercheck($emailaddress, $password);
+                if($id){
+                    $this->session->set_userdata('userid', $id);
+                    $output= array();
+                    $this->load->view('home', $output);
+                }else{
+                    redirect('home/index');
+                }
                 
                 
             }
@@ -43,10 +50,12 @@ class Home extends CI_Controller {
             
         }
         
-        private function usercheck($emailaddress, $password, $salt){
-            
-            
-            
-            
+        private function usercheck($emailaddress, $password){
+            $userdata = $this->usermodel->getUserByEmailaddress($emailaddress);
+            //var_dump($userdata);
+            if($userdata['password'] === hash('sha512',$password.$userdata['salt'])){
+                return $userdata['id'];
+            }
+            return false;
         }
 }
