@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `codeigniterex`.`systemuser` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(255) NULL,
   `lastname` VARCHAR(255) NULL,
-  `emailaddress` VARCHAR(255) NULL,
+  `emailaddress` VARCHAR(255) NOT NULL,
   `password` TEXT NULL,
   `salt` VARCHAR(255) NULL,
   `templogin` TINYINT(1) NULL,
@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `codeigniterex`.`systemuser` (
   `lud` DATETIME NULL,
   `dd` DATETIME NULL,
   `deleted` TINYINT(1) NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `emailaddress_UNIQUE` (`emailaddress` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
